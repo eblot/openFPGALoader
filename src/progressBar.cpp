@@ -50,7 +50,9 @@ void ProgressBar::display(int value, char force)
 		fputc('=', stderr);
 	}
 	fprintf(stderr, "%*s", (int)(_progressLen-nbEq), "");
-	printInfo("] " + std::to_string(percent) + "%", false);
+    char buf[16];
+    snprintf(buf, sizeof(buf), "] %.1f%%", percent);
+	printInfo(buf, false);
 }
 void ProgressBar::done()
 {
